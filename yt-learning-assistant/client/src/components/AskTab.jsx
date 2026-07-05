@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const API = import.meta.env.VITE_API_URL;
+
 export default function AskTab({ transcript }) {
   const [question, setQuestion] = useState("");
   const [thread, setThread] = useState([]); // [{ role: "q"|"a", text }]
@@ -8,14 +10,12 @@ export default function AskTab({ transcript }) {
     e.preventDefault();
     const q = question.trim();
     if (!q) return;
-
     setThread((t) => [...t, { role: "q", text: q }]);
     setQuestion("");
     // add a placeholder "thinking..." bubble we'll update once the answer arrives
     setThread((t) => [...t, { role: "a", text: "thinking..." }]);
-
     try {
-      const res = await fetch("/api/ask", {
+      const res = await fetch(`${API}/ask`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ transcript, question: q }),
