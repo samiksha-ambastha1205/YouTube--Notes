@@ -4,7 +4,7 @@ Turn a YouTube video into a summary, key concepts, flashcards, a quiz, and
 clickable timestamps. Paste a link, no sign-up.
 Try it on - https://youtube-notes-frontend.onrender.com/
 
-## How it works (the whole pipeline, in plain English)
+## How it works 
 
 1. You paste a YouTube URL into the form.
 2. The server pulls the video's title/thumbnail (`youtube.com/oembed` — free,
@@ -79,7 +79,7 @@ This starts the React app on http://localhost:5173 and forwards any
 
 Open **http://localhost:5173** while developing.
 
-**3. Production build** (optional, one server instead of two)
+**3. Production build** 
 ```
 cd client && npm run build
 ```
@@ -115,7 +115,7 @@ sometimes add a stray sentence before/after the JSON even when told not to.
 `ai.ts` defends against that by extracting just the `{...}` block from the
 response before parsing it.
 
-## Notes on the "minimal" choices
+## Notes on the choices
 
 - No database. State (transcript + generated material) lives in React state
   (`AppSection.jsx`) for as long as the tab is open. Refreshing loses it —
